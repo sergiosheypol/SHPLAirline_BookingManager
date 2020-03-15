@@ -1,21 +1,15 @@
-package com.shpl.bookingmanager.entity;
+package com.shpl.bookingmanager.dto.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.With;
 
 @Data
-@With
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingDetails {
-
+public class FlightBookingResultDto {
+    private FlightBookingStatus flightBookingStatus;
     private String pnr;
-
-    private String price;
-
-    private String dateOfBooking;
 }

@@ -1,7 +1,7 @@
 package com.shpl.bookingmanager.controller;
 
 
-import com.shpl.bookingmanager.service.BookingService;
+import com.shpl.bookingmanager.service.BookingManagerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -21,12 +21,12 @@ public class BookingControllerTest {
     private BookingController bookingController;
 
     @Mock
-    private BookingService bookingService;
+    private BookingManagerService bookingManagerService;
 
     @Test
     public void shouldSaveNewBooking() {
 
-        when(bookingService.saveNewBooking(eq(BookingControllerData.TEST_BOOKING_PUSH_DTO)))
+        when(bookingManagerService.saveNewBooking(eq(BookingControllerData.TEST_BOOKING_PUSH_DTO)))
                 .thenReturn(Mono.just(BookingControllerData.TEST_BOOKING_RESPONSE_DTO));
 
         StepVerifier.create(bookingController.saveNewBooking(BookingControllerData.TEST_BOOKING_PUSH_DTO))

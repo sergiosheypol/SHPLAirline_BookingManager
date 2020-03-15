@@ -1,4 +1,4 @@
-package com.shpl.bookingmanager.dto;
+package com.shpl.bookingmanager.dto.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

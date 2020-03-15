@@ -2,7 +2,7 @@ package com.shpl.bookingmanager.controller;
 
 import com.shpl.bookingmanager.dto.BookingPushDto;
 import com.shpl.bookingmanager.dto.BookingResponseDto;
-import com.shpl.bookingmanager.dto.FlightDto;
+import com.shpl.bookingmanager.dto.flight.FlightDto;
 
 import java.time.LocalDateTime;
 
@@ -26,7 +26,7 @@ public final class BookingControllerData {
 
     public static final BookingResponseDto TEST_BOOKING_RESPONSE_DTO = BookingResponseDto.builder()
             .flightDto(TEST_FLIGHT_DTO)
-            .dateOfBooking(LocalDateTime.parse("2020-02-27T07:10:00"))
+            .dateOfBooking("2020-02-27T07:10:00")
             .pnr("XCR456")
             .price("160.00")
             .userId("52563562")

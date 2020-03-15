@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.Map;
 
 @Data
 @With
@@ -17,6 +17,6 @@ import java.util.List;
 @Document
 public class Booking {
     private String userId;
-    private List<BookingDetails> bookings;
+    private Map<String, BookingDetails> bookings;
 
 }
