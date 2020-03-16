@@ -33,4 +33,8 @@ public class BookingFacade {
     public Mono<Booking> getBookingsFromUser(String userId) {
         return bookingCrudService.findBooking(userId);
     }
+
+    public Mono<Booking> deleteBooking(String userId, String flightId) {
+        return bookingCrudService.deleteBooking(userId, flightId);
+    }
 }

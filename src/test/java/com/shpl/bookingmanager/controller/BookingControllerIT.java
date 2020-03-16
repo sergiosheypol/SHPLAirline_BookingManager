@@ -1,8 +1,11 @@
 package com.shpl.bookingmanager.controller;
 
 import com.shpl.bookingmanager.BookingControllerData;
+import com.shpl.bookingmanager.config.MongoDBUtils;
 import com.shpl.bookingmanager.dto.BookingPushDto;
 import com.shpl.bookingmanager.dto.BookingResponseDto;
+import com.shpl.bookingmanager.entity.Booking;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +27,21 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class BookingControllerIT {
 
     private final static String SAVE_BOOKING_ENDPOINT = "/booking/saveBooking";
+    private final static String GET_BOOKINGS_ENDPOINT = "/booking/getBookings/{userId}";
+    private final static String DELETE_BOOKINGS_ENDPOINT = "/booking/deleteBooking/{userId}/{flightId}";
 
     @Autowired
     private WebTestClient webTestClient;
+
+    @Autowired
+    private MongoDBUtils mongoDBUtils;
+
+
+    @Before
+    public void setUp() {
+        mongoDBUtils.createCollection();
+        mongoDBUtils.createTestBooking();
+    }
 
     @Test
     public void shouldSaveNewBooking() {
@@ -49,7 +64,29 @@ public class BookingControllerIT {
 
     @Test
     public void shouldGetBookings() {
+        Booking res = this.webTestClient
+                .get()
+                .uri(GET_BOOKINGS_ENDPOINT, BookingControllerData.DEFAULT_USER_ID)
+                .exchange()
+                .expectBody(Booking.class)
+                .returnResult()
+                .getResponseBody();
 
+        assertThat(res.getBookings().get("FlightID")).isEqualTo(BookingControllerData.getBookingDetails());
     }
+
+    @Test
+    public void shouldDeleteBooking() {
+        Booking res = this.webTestClient
+                .post()
+                .uri(DELETE_BOOKINGS_ENDPOINT, BookingControllerData.DEFAULT_USER_ID, "FlightID")
+                .exchange()
+                .expectBody(Booking.class)
+                .returnResult()
+                .getResponseBody();
+
+        assertThat(res.getBookings().get("FlightID")).isNull();
+    }
+
 
 }

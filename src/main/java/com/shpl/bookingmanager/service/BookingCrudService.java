@@ -18,4 +18,14 @@ public class BookingCrudService {
     public Mono<Booking> saveBooking(Booking booking) {
         return bookingRepository.save(booking).defaultIfEmpty(Booking.builder().build());
     }
+
+    public Mono<Booking> deleteBooking(String userId, String flightId) {
+        return bookingRepository.findById(userId)
+                .map(booking -> {
+                    booking.getBookings().remove(flightId);
+                    return booking;
+                })
+                .flatMap(bookingRepository::save)
+                .defaultIfEmpty(Booking.builder().build());
+    }
 }

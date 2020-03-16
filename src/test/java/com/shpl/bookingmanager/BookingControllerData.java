@@ -14,6 +14,10 @@ import java.util.Map;
 
 public final class BookingControllerData {
 
+    public static final String USER_ID = "52563562";
+    public static final String DEFAULT_USER_ID = "444444";
+
+
     public static final FlightDto TEST_FLIGHT_DTO = FlightDto.builder()
             .id("FRAAAAAAA")
             .iataCode("FRAAAA")
@@ -27,7 +31,7 @@ public final class BookingControllerData {
     public static final BookingPushDto TEST_BOOKING_PUSH_DTO = BookingPushDto.builder()
             .flightDto(TEST_FLIGHT_DTO)
             .price("160.00")
-            .userId("52563562")
+            .userId(USER_ID)
             .build();
 
     public static final BookingResponseDto TEST_BOOKING_RESPONSE_DTO = BookingResponseDto.builder()
@@ -57,7 +61,7 @@ public final class BookingControllerData {
 
     public static final Booking BOOKING =
             Booking.builder()
-                    .id("t4t3t345")
+                    .id(DEFAULT_USER_ID)
                     .bookings(getBookingDetailsMap())
                     .build();
 

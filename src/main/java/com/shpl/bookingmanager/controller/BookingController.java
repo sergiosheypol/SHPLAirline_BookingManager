@@ -23,7 +23,6 @@ import javax.validation.Valid;
 @RequestMapping("/booking")
 public class BookingController {
 
-
     private final BookingFacade bookingFacade;
 
     @PostMapping("/saveBooking")
@@ -38,6 +37,15 @@ public class BookingController {
     @ResponseBody
     public Mono<Booking> getBookings(@Valid @PathVariable("userId") String userId) {
         return bookingFacade.getBookingsFromUser(userId);
+    }
+
+    @PostMapping("/deleteBooking/{userId}/{flightId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public Mono<Booking> deleteBooking(@Valid @PathVariable("userId") String userId,
+                                       @PathVariable("flightId") String flightId) {
+
+        return bookingFacade.deleteBooking(userId, flightId);
     }
 
 }
