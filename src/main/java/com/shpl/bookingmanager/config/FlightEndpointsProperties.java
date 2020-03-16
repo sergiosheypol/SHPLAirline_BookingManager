@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "flights")
 public class FlightEndpointsProperties {
     private String base;
+    private String port;
     private String saveNewBooking;
     private String isFlightAvailable;
     private String pushFlight;

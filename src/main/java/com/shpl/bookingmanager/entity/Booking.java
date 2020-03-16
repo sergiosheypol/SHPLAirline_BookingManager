@@ -16,7 +16,11 @@ import java.util.Map;
 @NoArgsConstructor
 @Document
 public class Booking {
-    private String userId;
+
+    //userID
+    private String id;
+
+    // FlightID - BookingDetails
     private Map<String, BookingDetails> bookings;
 
 }
