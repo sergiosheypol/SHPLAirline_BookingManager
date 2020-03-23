@@ -25,7 +25,6 @@ public class BookingFacade {
         return bookingOrchestratorService.saveNewBooking(bookingPushDto)
                 .map(booking -> bookingMapper.bookingToBookingResponseDto(
                         booking.getBookings().get(bookingPushDto.getFlightDto().getId()),
-                        bookingPushDto.getFlightDto(),
                         bookingPushDto.getUserId()))
                 .defaultIfEmpty(BookingResponseDto.builder().build());
     }

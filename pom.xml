@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.shpl</groupId>
-	<artifactId>flightbooking</artifactId>
+	<artifactId>bookingmanager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>flightbooking</name>
+	<name>bookingmanager</name>
 	<description>Bookings manager</description>
 
 	<properties>

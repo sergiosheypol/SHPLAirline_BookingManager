@@ -35,10 +35,7 @@ public final class BookingControllerData {
             .build();
 
     public static final BookingResponseDto TEST_BOOKING_RESPONSE_DTO = BookingResponseDto.builder()
-            .flightDto(TEST_FLIGHT_DTO)
-            .dateOfBooking("2020-02-27T07:10:00")
             .pnr("XCR456")
-            .price("160.00")
             .userId("52563562")
             .build();
 

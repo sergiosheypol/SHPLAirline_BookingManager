@@ -57,7 +57,6 @@ public class BookingControllerIT {
                 .returnResult()
                 .getResponseBody();
 
-        assertThat(responseBody.getFlightDto()).isEqualTo(BookingControllerData.TEST_FLIGHT_DTO);
         assertThat(responseBody.getPnr()).isNotNull();
 
     }
