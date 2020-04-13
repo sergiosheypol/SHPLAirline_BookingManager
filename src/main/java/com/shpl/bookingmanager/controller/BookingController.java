@@ -6,6 +6,7 @@ import com.shpl.bookingmanager.entity.Booking;
 import com.shpl.bookingmanager.facade.BookingFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,7 @@ public class BookingController {
         return bookingFacade.getBookingsFromUser(userId);
     }
 
-    @PostMapping("/deleteBooking/{userId}/{flightId}")
+    @DeleteMapping("/deleteBooking/{userId}/{flightId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public Mono<Booking> deleteBooking(@Valid @PathVariable("userId") String userId,

@@ -77,7 +77,7 @@ public class BookingControllerIT {
     @Test
     public void shouldDeleteBooking() {
         Booking res = this.webTestClient
-                .post()
+                .delete()
                 .uri(DELETE_BOOKINGS_ENDPOINT, BookingControllerData.DEFAULT_USER_ID, "FlightID")
                 .exchange()
                 .expectBody(Booking.class)
